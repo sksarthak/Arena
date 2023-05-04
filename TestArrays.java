@@ -42,4 +42,23 @@ public class TestArrays {
         }
         System.out.println();
     }
+
+    public static void testSingleNumber() {
+        int[] nums = {2,2,11,7,7,11,15};
+        int x = SingleNumber.singleNumberXOR(nums);
+        System.out.println(x);
+    }
+
+    public static void testSingleNumber2() {
+        int[] nums = {2,2,11,15,7,11,15};
+        int x = SingleNumber.singleNumberSets(nums);
+        System.out.println(x);
+    }
+
+    public static void testSingleNumber3() {
+        int[] nums = {2,7,15,2,7,11,15};
+        int x = SingleNumber.singleNumberHashmap(nums);
+        System.out.println(x);
+    }
+
 }
