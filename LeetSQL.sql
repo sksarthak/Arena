@@ -7,3 +7,11 @@ select ex.name as employee from employee ex left join employee m on ex.managerId
 # 182. Duplicate Emails : https://leetcode.com/problems/duplicate-emails/
 select distinct a.email from person a cross join person b on a.id!=b.id and a.email=b.email;
 select distinct email from person group by email having count(email)>1;
+
+# 176. Second Highest Salary : https://leetcode.com/problems/second-highest-salary/
+select * from( (select distinct salary as SecondHighestSalary from employee) union (select null as SecondHighestSalary)) data order by SecondHighestSalary desc limit 1,1;
+
+#183. Customers Who Never Order : https://leetcode.com/problems/customers-who-never-order/
+
+select name as 'Customers' from customers left join orders on orders.customerid=customers.id  where customerId is null;
+select name as 'Customers' from customers where id not in (select customerId from orders);
