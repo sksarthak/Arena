@@ -12,6 +12,9 @@ select distinct email from person group by email having count(email)>1;
 select * from( (select distinct salary as SecondHighestSalary from employee) union (select null as SecondHighestSalary)) data order by SecondHighestSalary desc limit 1,1;
 
 #183. Customers Who Never Order : https://leetcode.com/problems/customers-who-never-order/
-
 select name as 'Customers' from customers left join orders on orders.customerid=customers.id  where customerId is null;
 select name as 'Customers' from customers where id not in (select customerId from orders);
+
+#196. Delete Duplicate Emails : https://leetcode.com/problems/delete-duplicate-emails/
+delete from person where id not in (select * from(select min(id) from person group by email) as a );
+delete p from person p, person p2 where p.id>p2.id and p.email=p2.email;
